@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\SoccerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+Route::get('/dashboard', [SoccerController::class, 'dashboardPage'])->name('dashboardPage');
+
+Route::get('/generatefixture', [SoccerController::class, 'generateFixture'])->name('generateFixture');
+
+Route::get('/playnextweek', [SoccerController::class, 'playNextWeek'])->name('playNextWeek');
+Route::get('/playallweeks', [SoccerController::class, 'playAllWeeks'])->name('playAllWeeks');
+Route::get('/resetresults', [SoccerController::class, 'resetResults'])->name('resetResults');
