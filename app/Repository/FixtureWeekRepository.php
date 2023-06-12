@@ -25,7 +25,7 @@ class FixtureWeekRepository extends AbstractRepository
 				'fixtureGames' => function ($q) {
 					$q->where('status', 0)
 						->with([
-							'gameScores'
+							'gameScores.team'
                         ]);
 				}
 			])
@@ -48,6 +48,16 @@ class FixtureWeekRepository extends AbstractRepository
                         ]);
 				}
 			])
+			->get();
+		return $result;
+	}
+
+	public function getFixture()
+	{
+		$result = $this->defaultModel()
+		->with([
+			'fixtureGames.gameScores.team'
+		])
 			->get();
 		return $result;
 	}

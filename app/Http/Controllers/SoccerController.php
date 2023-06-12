@@ -8,19 +8,33 @@ use App\Services\FixtureWeekService;
 use App\Services\GameScoreService;
 
 use App\Repository\FixtureWeekRepository;
+use App\Repository\FixtureGameRepository;
 
 class SoccerController extends Controller
 {
 
     public function dashboardPage (
-TeamRepository $teamRepository
+        TeamRepository $teamRepository,
+        FixtureWeekRepository $fixtureWeekRepository,
+        FixtureWeekHelper $fixtureWeekHelper
     )
     {
         $data = [];
 
         $teams = $teamRepository->getAllTeams();
+        $fixture = $fixtureWeekRepository->getFixture();
+        $nextWeek = $fixtureWeekRepository->getNextWeek();
+
+        $results = $fixtureWeekHelper->calculateResults($fixture);
+        $prodictions = $fixtureWeekHelper->calcProdictions($results);
+        
 
         $data['teams'] = $teams->toArray();
+        $data['fixture'] = $fixture->toArray();
+        $data['nextWeek'] = $nextWeek->toArray();
+        
+        $data['results'] = $results;
+        $data['prodictions'] = $prodictions;
 
         return view('dashboard',$data);
     }

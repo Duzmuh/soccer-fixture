@@ -13,10 +13,8 @@ use App\Http\Controllers\SoccerController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-Route::get('/dashboard', [SoccerController::class, 'dashboardPage'])->name('dashboardPage');
+
+Route::get('/', [SoccerController::class, 'dashboardPage'])->name('dashboardPage');
 
 Route::get('/generatefixture', [SoccerController::class, 'generateFixture'])->name('generateFixture');
 
