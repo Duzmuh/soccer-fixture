@@ -103,7 +103,7 @@
                     @foreach ($teams as $team)
                     <tr>
                         <td>{{data_get($team,'name')}}</td>
-                        <td>{{$prodictions[data_get($team,'id')]}}</td>
+                        <td>{{round($prodictions[data_get($team,'id')])}}</td>
                     </tr>
                 @endforeach
                 </tbody>
