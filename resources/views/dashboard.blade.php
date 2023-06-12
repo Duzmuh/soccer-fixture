@@ -66,7 +66,7 @@
             </table>
         </div>
 
-
+        @if($nextWeek)
         <div class="col-3">
             <table class="table">
                 <thead>
@@ -90,6 +90,7 @@
                 </tbody>
             </table>
         </div>
+        @endif
 
         <div class="col-3">
             <table class="table">

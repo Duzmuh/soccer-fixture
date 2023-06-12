@@ -141,9 +141,12 @@ class FixtureWeekHelper
             $result[$teamKey] = data_get($team,'pts')+(data_get($team,'gf')-data_get($team,'ga'));
             $total += $result[$teamKey];
         }
-        foreach($data as $teamKey => $team)
+        if($total != 0)
         {
-            $result[$teamKey] = ($result[$teamKey]/$total)*100;
+            foreach($data as $teamKey => $team)
+            {
+                $result[$teamKey] = ($result[$teamKey]/$total)*100;
+            }
         }
         
         return $result;

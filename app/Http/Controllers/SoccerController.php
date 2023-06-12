@@ -31,7 +31,7 @@ class SoccerController extends Controller
 
         $data['teams'] = $teams->toArray();
         $data['fixture'] = $fixture->toArray();
-        $data['nextWeek'] = $nextWeek->toArray();
+        $data['nextWeek'] = $nextWeek ? $nextWeek->toArray() : [];
         
         $data['results'] = $results;
         $data['prodictions'] = $prodictions;
